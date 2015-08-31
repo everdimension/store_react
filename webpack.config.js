@@ -28,7 +28,11 @@ var config = {
 			inject: true,
 			template: path.join(srcPath, 'index.html')
 		})
-	]
+	],
+
+	devServer: {
+		port: 3000
+	}
 };
 
 module.exports = config;
