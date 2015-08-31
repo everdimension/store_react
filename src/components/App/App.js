@@ -1,4 +1,5 @@
 import React from 'react';
+require('./App.less');
 
 class App extends React.Component {
 	constructor(props) {
@@ -11,9 +12,9 @@ class App extends React.Component {
 	render() {
 		let Child = this.props.route;
 		return (
-			<div>
+			<div className="container">
 				<h2>App</h2>
-				<p>Message: {this.state.msg}</p>
+				<p className="lead">Message: <i>{this.state.msg}</i></p>
 				{this.props.children}
 			</div>
 		);
