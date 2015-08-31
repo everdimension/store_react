@@ -1,4 +1,19 @@
 import React from 'react';
 import App from 'components/App';
+import router from './router';
 
-React.render(<App />, document.getElementById('app-root'));
+function getRouteComponent(routeName) {
+	return componentsMap[routeName] || componentsMap.home;
+
+}
+
+router.onChange(function(RouteComponent) {
+	React.render(
+		(
+			<App>
+				<RouteComponent />
+			</App>
+		),
+		document.getElementById('app-root')
+	);
+});
