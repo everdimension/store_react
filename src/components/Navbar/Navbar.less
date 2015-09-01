@@ -1,0 +1,31 @@
+@import '../variables.less';
+@import '../mixins.less';
+
+.Navbar {
+	background-color: @brand-primary;
+	margin-bottom: 50px;
+	.Navbar__nav {
+		.clear-ul();
+		> li {
+			display: inline-block;
+			line-height: 60px;
+			color: white;
+			&.text-item {
+				padding-left: 15px;
+				padding-right: 15px;
+			}
+		}
+		> li > a {
+			display: block;
+			padding-left: 15px;
+			padding-right: 15px;
+			color: white;
+			&.active {
+				background-color: darken(@brand-primary, 10%);;
+			}
+			&.first {
+				margin-left: -15px;
+			}
+		}
+	}
+}
