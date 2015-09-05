@@ -16,7 +16,7 @@ class App extends React.Component {
 			<div>
 				<Navbar />
 				<div className="container">
-					<h2>App is changing...</h2>
+					<h2>App is...</h2>
 					<p className="lead">Message: <i>{this.state.msg}</i></p>
 					{this.props.children}
 				</div>
