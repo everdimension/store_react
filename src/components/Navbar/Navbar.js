@@ -2,7 +2,7 @@ import React from 'react';
 import './Navbar.less';
 
 class Navbar extends React.Component {
-	// TODO: 
+	// TODO:
 	// expect session info in props
 
 	render() {
@@ -14,7 +14,7 @@ class Navbar extends React.Component {
 							<nav>
 								<ul className="Navbar__nav">
 									<li><a className="first" href="#">Home</a></li>
-									<li ng-hide="Session.user"><a href="#">Login</a></li>
+									<li ng-hide="Session.user"><a href="#login">Login</a></li>
 									<li ng-hide="Session.user"><a href="#">Signup</a></li>
 									<li ng-show="Session.user" className="text-item">Session.user.email</li>
 									<li ng-show="Session.user"><a href="#">logout</a></li>

@@ -1,6 +1,8 @@
+var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var path = require('path');
 
+var nodeModulesPath = path.join(__dirname, 'node_modules');
 var srcPath = path.join(__dirname, 'src');
 var buildPath = path.join(__dirname, 'build');
 
@@ -15,25 +17,27 @@ var config = {
 	},
 	output: {
 		path: buildPath,
-		filename: '[name].bundle.js'
+		filename: '[name].bundle.js',
+		publicPath: '/build'
 	},
 	module: {
 		loaders: [
-			{ test: /\.js$/, exclude: /node_modules/, loader: 'babel' },
-			{ test: /\.css$/, exclude: /node_modules/, loader: 'style!css' },
+			{ test: /\.js$/, exclude: nodeModulesPath, loader: 'babel' },
+			{ test: /\.css$/, exclude: nodeModulesPath, loader: 'style!css' },
 			{ test: /\.less$/, loader: 'style!css!less'}
 		]
 	},
 	plugins: [
+		new webpack.HotModuleReplacementPlugin(),
 		new HtmlWebpackPlugin({
 			inject: true,
 			template: path.join(srcPath, 'index.html')
 		})
-	],
+	]
 
-	devServer: {
-		port: 3000
-	}
+	// devServer: {
+	// 	port: 3000
+	// }
 };
 
 module.exports = config;
