@@ -8,7 +8,7 @@ class Item extends React.Component {
 				<div className="panel-body">
 					<div className="media">
 						<div className="media-left">
-							<img src={item.img} alt="item image" className="media-object" />
+							<img src={item.img} width="150" alt="item image" className="media-object" />
 							</div>
 
 							<div className="media-body">

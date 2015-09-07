@@ -1,0 +1,55 @@
+@import "../mixins.less";
+
+.Loader {
+	.loader();
+}
+.Loader--lg {
+	margin-top: 50px;
+}
+
+.loader(@d: 60px, @b: 4px) {
+	position: relative;
+	display: inline-block;
+	border-radius: 50%;
+	border: @b solid grey;
+	border-top-color: transparent;
+	.square(@d);
+	animation: spinning .7s infinite linear;
+
+	&:after {
+		content: ' ';
+		position: absolute;
+		top: (@d - (2 * @b) - (@d * .8)) / 2;
+		left: (@d - (2 * @b) - (@d * .8)) / 2;
+		display: inline-block;
+		border-radius: 50%;
+		border: @b solid grey;
+		border-bottom-color: transparent;
+		.square(@d * .8);
+		animation: spinning-back .3s infinite linear;
+	}
+}
+
+@keyframes spinning {
+
+	0% {
+		transform: rotate(0);
+	}
+
+	100% {
+		transform: rotate(360deg);
+	}
+
+}
+
+@keyframes spinning-back {
+
+	0% {
+		transform: rotate(0);
+	}
+
+	100% {
+		transform: rotate(-360deg);
+	}
+
+}
