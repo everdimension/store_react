@@ -37,6 +37,6 @@ const ItemsActions = {
 			}
 		});
 	}
-}
+};
 
 export default ItemsActions;

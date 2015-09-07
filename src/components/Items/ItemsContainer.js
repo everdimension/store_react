@@ -8,15 +8,16 @@ class ItemsContainer extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = ItemsStore.getState();
+		this.onStoreChange = this.onStoreChange.bind(this);
 	}
 
 	componentDidMount() {
-		ItemsStore.listen(this.onStoreChange.bind(this));
+		ItemsStore.listen(this.onStoreChange);
 		ItemsActions.fetchItems();
 	}
 
 	componentWillUnmount() {
-		ItemsStore.unlisten(this.onStoreChange.bind(this));
+		ItemsStore.unlisten(this.onStoreChange);
 	}
 
 	render() {
