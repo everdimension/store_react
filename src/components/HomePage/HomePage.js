@@ -9,4 +9,6 @@ class HomePage extends React.Component {
 	}
 }
 
+HomePage.requiresLogin = true;
+
 export default HomePage;

@@ -1,16 +1,18 @@
 import React from 'react';
-import LoginForm from './LoginForm';
+
 import AuthActions from '../../actions/AuthActions';
-import AuthStore from '../../stores/AuthStore';
+import AuthStore   from '../../stores/AuthStore';
+import LoginForm   from './LoginForm';
 
 class LoginContainer extends React.Component {
+
 	constructor(props) {
 		super(props);
 		this.state = AuthStore.getState();
 		this.onStoreChange = this.onStoreChange.bind(this);
 	}
 
-	componentWillMount() {
+	componentDidMount() {
 		AuthStore.listen(this.onStoreChange);
 	}
 	componentWillUnmount() {
@@ -20,18 +22,22 @@ class LoginContainer extends React.Component {
 	render() {
 		return (
 			<LoginForm
-				onLogin={this.onLogin.bind(this)}
+				onSubmit={this.onLoginAttempt.bind(this)}
 				isAuthenticated={this.state.isAuthenticated}
-				err={this.state.errorMsg} />
+				err={this.state.errorMsg}
+			/>
 		);
 	}
 
-	onLogin(credentials) {
+	onLoginAttempt(credentials) {
 		AuthActions.login(credentials);
 	}
 
 	onStoreChange() {
 		this.setState(AuthStore.getState());
+		if (this.state.isAuthenticated) {
+			window.location.hash = '';
+		}
 	}
 }
 

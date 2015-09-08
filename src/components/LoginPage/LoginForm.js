@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import classNames from 'classnames';
 import './Login.less';
 
-class Login extends React.Component {
+class LoginForm extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -53,8 +53,15 @@ class Login extends React.Component {
 	login(evt) {
 		evt.preventDefault();
 		console.log(evt, this.state);
-		this.props.onLogin(this.state);
+		this.props.onSubmit(this.state);
 	}
 }
 
-export default Login;
+LoginForm.propTypes = {
+	onSubmit: PropTypes.func.isRequired,
+	isAuthenticated: PropTypes.bool,
+	err: PropTypes.object
+};
+
+
+export default LoginForm;

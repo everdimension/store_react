@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 class Item extends React.Component {
 	render() {
@@ -44,5 +44,9 @@ class Item extends React.Component {
 		);
 	}
 }
+
+Item.propTypes = {
+	item: PropTypes.object.isRequired
+};
 
 export default Item;

@@ -7,6 +7,7 @@ const ItemsActions = {
 	fetchItems: function() {
 		this.dispatchLoading(true);
 
+		console.log('fecthing items');
 		ItemsApi.get()
 			.then((res) => {
 				console.log('got items from api!');

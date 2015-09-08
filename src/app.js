@@ -1,19 +1,20 @@
 import React from 'react';
 import App from 'components/App';
 import router from './router';
+import AuthActions from 'actions/AuthActions';
 
-function getRouteComponent(routeName) {
-	return componentsMap[routeName] || componentsMap.home;
+AuthActions.auth();
 
-}
+const root = document.getElementById('app-root');
 
 router.onChange(function(RouteComponent) {
+
 	React.render(
 		(
 			<App>
 				<RouteComponent />
 			</App>
 		),
-		document.getElementById('app-root')
+		root
 	);
 });

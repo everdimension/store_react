@@ -16,27 +16,29 @@ function toggleLoading(isLoading) {
 	_isLoading = isLoading;
 }
 
-const ItemsStore = Object.assign(EventEmitter.prototype, {
-	getState: function () {
+class ItemsStore extends EventEmitter {
+	getState () {
 		return {
 			all_items: getAll(),
 			isLoading: _isLoading
 		};
-	},
+	}
 
-	emitChange: function () {
+	emitChange () {
 		this.emit('change');
-	},
+	}
 
-	listen: function (callback) {
+	listen (callback) {
 		this.on('change', callback);
-	},
+	}
 
-	unlisten: function (callback) {
+	unlisten (callback) {
 		this.removeListener('change', callback);
 	}
 
-});
+}
+
+let itemsStore = new ItemsStore();
 
 dispatcher.register(function (action) {
 	if (action.type === 'LOAD_ITEMS') {
@@ -50,8 +52,8 @@ dispatcher.register(function (action) {
 		return;
 	}
 
-	ItemsStore.emitChange();
+	itemsStore.emitChange();
 
 });
 
-export default ItemsStore;
+export default itemsStore;

@@ -1,10 +1,11 @@
 import React from 'react';
 
-import ItemsStore from '../../stores/ItemsStore';
 import ItemsActions from '../../actions/ItemsActions';
-import ItemsList from './ItemsList';
+import ItemsStore   from '../../stores/ItemsStore';
+import ItemsList    from './ItemsList';
 
 class ItemsContainer extends React.Component {
+
 	constructor(props) {
 		super(props);
 		this.state = ItemsStore.getState();
