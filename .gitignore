@@ -2,6 +2,10 @@ node_modules
 ncp-debug.log
 npm-debug.log
 
+# settings data #
+#################
+conf/settings.json
+
 # OS generated files #
 ######################
 .DS_Store

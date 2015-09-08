@@ -18,7 +18,14 @@ var proxy = httpProxy.createProxyServer({
 // require userSchema, itemSchema
 // ------------------------------
 
-mongoose.connect('mongodb://swhaleadmin:55591153142@apollo.modulusmongo.net:27017/waG9ybam');
+var db_username = process.env.NODE_STORE_REACT_USER || 'username';
+var db_password = process.env.NODE_STORE_REACT_PASS || 'password';
+console.log('db_password', db_password);
+console.log('db_username', db_username);
+var db_address = 'mongodb://' + db_username + ':' + db_password + '@apollo.modulusmongo.net:27017/waG9ybam';
+console.log('db_address', db_address);
+
+mongoose.connect(db_address);
 
 var app = express();
 
